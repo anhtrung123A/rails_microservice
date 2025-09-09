@@ -17,6 +17,7 @@ gem 'faker'
 gem 'friendly_id'
 gem 'kaminari'
 gem 'ancestry'
+gem 'fast_jsonapi'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 

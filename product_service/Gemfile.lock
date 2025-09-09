@@ -135,6 +135,8 @@ GEM
       tzinfo
     faker (3.5.2)
       i18n (>= 1.8.11, < 2)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
     fugit (1.11.2)
@@ -374,6 +376,7 @@ DEPENDENCIES
   debug
   dry-validation
   faker
+  fast_jsonapi
   friendly_id
   jbuilder
   kamal

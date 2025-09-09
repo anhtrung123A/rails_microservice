@@ -13,5 +13,4 @@ class ProductContract < Dry::Validation::Contract
       key.failure('must be at least 10 character if provided')
     end
   end
-
 end

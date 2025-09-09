@@ -1,25 +1,25 @@
 class Api::V1::ProductsController < ApplicationController
 
   def index
-    @products = Service::ProductService.get_all_products(params[:page] || 1, params[:per_page] || 20)
+    @products = Products::GetAllProducts.call params[:page] || 1, params[:per_page] || 20
     if @products.length > 0
       render :index, status: :ok
     else
-      render json: { message: "Products list is currently empty!"}, status: :not_found
+      render json: { products: [] }, status: :ok
     end
   end
 
   def show
-    @product = Service::ProductService.get_product_by_id(params[:id])
+    @product = Products::GetProductById.call params[:id]
     if @product != nil
       render :show, status: :ok
     else
-      render json: { message: "Product with id: #{params[:id]} not found!"}, status: :not_found
+      render json: { message: "Product not found!"}, status: :not_found
     end
   end
 
   def create
-    result = Service::ProductService.create_new_product(product_params)
+    result = Products::CreateNewProduct.call product_params
     if result[:success]
       @product = result[:data]
       render :create, status: :created
@@ -31,7 +31,7 @@ class Api::V1::ProductsController < ApplicationController
   private
 
   def product_params
-    params.permit(:name, :base_price, :description, images: [])
+    params.permit(:name, :base_price, :description, :category_id, images: [])
   end
 
 end
